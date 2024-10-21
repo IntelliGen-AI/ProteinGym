@@ -3,9 +3,17 @@
 source ../zero_shot_config.sh
 source activate proteingym_env
 
-export ProtGPT2_model_name_or_path="path to ProtGPT2 model checkpoint"
+export ProtGPT2_model_name_or_path="nferruz/ProtGPT2"
 export output_scores_folder="${DMS_output_score_folder_subs}/ProtGPT2"
-export DMS_index="Experiment index to run (e.g. 1,2,...217)"
+export DMS_index="0"
+
+# Check if the directory exists
+if [ ! -d "$output_scores_folder" ]; then
+    echo "Directory does not exist, creating directory: $output_scores_folder"
+    mkdir "$output_scores_folder"
+else
+    echo "Directory already exists: $output_scores_folder"
+fi
 
 python ../../proteingym/baselines/protgpt2/compute_fitness.py \
             --ProtGPT2_model_name_or_path ${ProtGPT2_model_name_or_path} \

@@ -74,7 +74,7 @@ def main():
 
     model = AutoModelForCausalLM.from_pretrained(args.ProtGPT2_model_name_or_path,trust_remote_code=True)
     model.cuda()
-    tokenizer = AutoTokenizer.from_pretrained("/n/groups/marks/projects/marks_lab_and_oatml/protein_transformer/baseline_models/ProtGPT2")
+    tokenizer = AutoTokenizer.from_pretrained(args.ProtGPT2_model_name_or_path,trust_remote_code=True)
 
     mapping_protein_seq_DMS = pd.read_csv(args.DMS_reference_file_path)
     list_DMS = mapping_protein_seq_DMS["DMS_id"]
